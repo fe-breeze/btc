@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!--[if lt IE 9]>
+    <meta http-equiv="refresh" content="0;ie.html" />
+    <![endif]-->
+  <link rel="stylesheet" href="fonts/iconfont.css">
+  <link href="css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
+  <link href="css/font-awesome.min.css?v=4.4.0" rel="stylesheet">
+  <link href="css/animate.css" rel="stylesheet">
+  <link rel="stylesheet" href="./css/swiper-4.1.0.min.css">
+  <title>内部网矿池管理系统</title>
+  <style>
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    
+    ul>li {
+      margin: 0;
+    }
+    
+    dl,
+    dd,
+    dt {
+      margin: 0;
+      padding: 0;
+    }
+    
+    a,
+    a:hover {
+      text-decoration: none;
+    }
+    
+    a {
+      color: #999999;
+    }
+    
+    a:hover {
+      color: #fff;
+    }
+    
+    .top {
+      height: 35px;
+      background-color: #19232B;
+    }
+    
+    .top-content {
+      width: 1201px;
+      position: relative;
+      height: 35px;
+      margin: 0 auto;
+      color: #67737B;
+      font-size: 14px;
+    }
+    
+    .top-left {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    
+    .top-right {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      right: 0;
+    }
+    
+    .top-right label {
+      margin-right: 6px;
+    }
+    
+    .top-right input::-webkit-input-placeholder {
+      color: #aab2bd;
+      font-size: 12px;
+      padding-left: 8px;
+    }
+    
+    .top-right input {
+      width: 110px;
+      height: 24px;
+      background-color: #19232B;
+      border-radius: 3px;
+      border: 1px solid #67737B;
+      padding: 0;
+    }
+    
+    .top-right input:focus {
+      outline: none;
+    }
+    
+    .username {
+      margin-right: 17px;
+    }
+    
+    .password {
+      margin-right: 8px;
+    }
+    
+    .login {
+      background-color: #B61E1E;
+      color: #FFFFFF;
+      outline: none;
+      border: 1px solid #9F1A1A;
+      border-radius: 3px
+    }
+    
+    .login:focus {
+      outline: none;
+    }
+    
+    .login-search {
+      height: 113px;
+      background-image: url('./images/index_bg.png');
+      background-repeat: repeat-x;
+      background-position: center;
+    }
+    
+    .login-search-content {
+      margin: 0 auto;
+      width: 1201px;
+      height: 113px;
+      position: relative;
+    }
+    
+    .login-search-content>img {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    
+    .search-wrap {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 659px;
+      height: 40px;
+      background: rgba(255, 255, 255, 1);
+      border-radius: 3px;
+      color: #FFFFFF;
+      border: 1px solid #1E72B6;
+      right: 0;
+    }
+    
+    .search-wrap>input {
+      width: 559px;
+      height: 100%;
+      padding: 0;
+      margin: 0;
+      color: rgba(164, 164, 164, 1);
+      padding-left: 15px;
+      float: left;
+    }
+    
+    .search-wrap>input::-webkit-input-placeholder {
+      font-size: 15px;
+      font-family: MicrosoftYaHei;
+      color: rgba(164, 164, 164, 1);
+      padding-left: 15px;
+    }
+    
+    .search {
+      width: 98px;
+      height: 100%;
+      background: rgba(30, 114, 182, 1);
+      padding: 0;
+      border: 0;
+    }
+    
+    .nav-wrap {
+      background-color: #1E72B6;
+      height: 50px;
+      box-shadow: 0px 10px 5px #1E72B6;
+    }
+    
+    .nav-ul {
+      height: 50px;
+      font-size: 20px;
+      margin: 0 auto;
+      width: 1201px;
+      list-style: none;
+    }
+    
+    .nav-ul>li>a {
+      float: left;
+      width: 193px;
+      line-height: 50px;
+      color: #FFFFFF;
+      text-decoration: none;
+      text-align: center;
+    }
+    
+    .nav-ul>li>a:hover {
+      color: #f5bc0d;
+    }
+    
+    .swiper-container {
+      height: 360px;
+    }
+    
+    .swiper-container img {
+      width: 100%;
+      height: 360px;
+    }
+    
+    .news-wrap {
+      margin-top: 45px;
+      width: 1201px;
+      margin: 45px auto 0;
+      overflow: hidden;
+    }
+    
+    .news-left {
+      width: 883px;
+      float: left;
+      margin-right: 38px;
+    }
+    
+    .news-left-tab {
+      height: 48px;
+      background: rgba(240, 245, 248, 1);
+      border-top: 1px solid #cbd9e8;
+      border-bottom: 1px solid #cbd9e8;
+    }
+    
+    .news-left-tab>li {
+      width: 136px;
+      float: left;
+      line-height: 48px;
+      color: #164E89;
+      font-size: 16px;
+      text-align: center;
+      cursor: pointer;
+    }
+    
+    .news-left-tab>li.active {
+      border-top: 1px solid #0474fd;
+    }
+    
+    .news-left-tab>li i {
+      margin-right: 5px;
+    }
+    
+    .news-content {
+      width: 882px;
+    }
+    
+    .news-content>li {
+      background: #f0f5f8;
+      width: 882px;
+      height: 193px;
+      padding: 10px;
+      margin-top: 12px;
+      position: relative;
+    }
+    
+    .news-content>li>img:nth-of-type(1) {
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+    
+    .news-content>li>img:nth-of-type(2) {
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
+    
+    .news-content>li>img:nth-of-type(3) {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+    }
+    
+    .news-content>li>img:nth-of-type(4) {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+    }
+    
+    .news-img-wrap {
+      width: 238px;
+      height: 172px;
+      border: 1px solid #1b528c;
+      position: relative;
+      margin-right: 26px;
+      float: left;
+    }
+    
+    .news-img {
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
+    
+    .news-content-wrap {
+      float: left;
+      width: 560px;
+      margin-top: 22px;
+    }
+    
+    .news-content-title {
+      width: 323px;
+      height: 20px;
+      font-size: 18px;
+      font-family: MicrosoftYaHei;
+      color: rgba(22, 78, 137, 1);
+      line-height: 0px;
+    }
+    
+    .news-content-p {
+      font-size: 14px;
+      font-family: MicrosoftYaHei;
+      color: rgba(137, 155, 173, 1);
+    }
+    
+    .table-wrap {
+      margin: 0 auto;
+      width: 1201px;
+      margin-top: 53px;
+      margin-bottom: 58px;
+      color: #164E89;
+      background: rgba(240, 245, 248, 1);
+      font-size: 18px;
+    }
+    
+    .table-title {
+      height: 76px;
+      display: flex;
+      align-items: center;
+      padding-left: 27px;
+    }
+    
+    .table-title>img {
+      margin-right: 10px;
+    }
+    
+    .table-wrap tr {
+      height: 76px;
+      text-align: center;
+    }
+    
+    .table-wrap>.table-bordered>tbody>tr>th {
+      vertical-align: middle;
+      text-align: center;
+      background-color: #B5CCF3;
+    }
+    
+    .table-wrap>.table-bordered>tbody>tr>td {
+      vertical-align: middle;
+    }
+    
+    .table-wrap tr:nth-of-type(odd) {
+      background-color: #E4E8EB;
+    }
+    
+    .table-wrap tr:nth-of-type(even) {
+      background-color: #F0F5F8;
+    }
+    
+    .map-wrap {
+      height: 203px;
+      overflow: hidden;
+      background: rgba(7, 55, 105, 1);
+    }
+    
+    .help {
+      width: 276px;
+      float: left;
+    }
+    
+    .help-detail {
+      border: 1px solid #1d629d;
+      height: 335px;
+      padding-left: 20px;
+      padding-right: 17px;
+      padding-top: 10px;
+    }
+    
+    .help-detail-item>li {
+      border-bottom: 1px solid #E5E5E5;
+      padding-top: 10px;
+      padding-bottom: 10px;
+    }
+    
+    .help-detail-item>li:last-child {
+      border-bottom: 0;
+    }
+    
+    .help-title {
+      color: #164E89;
+      line-height: 2.5;
+    }
+    
+    .help-content {
+      color: #899AAC;
+      font-size: 10px;
+      line-height: 2;
+    }
+    
+    .map-content {
+      width: 1201px;
+      margin: 0 auto;
+      color: #999999;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    
+    .map-content>li {
+      height: 203px;
+      width: 215px;
+      display: flex;
+      align-items: center;
+    }
+    
+    .map-content dl {
+      width: 100%;
+    }
+    
+    .map-content dt {
+      font-size: 16px;
+      height: 36px;
+      margin-bottom: 25px;
+      border-bottom: 1px solid #696975;
+    }
+    
+    .map-content dt i {
+      margin-right: 10px;
+    }
+    
+    .map-content dd {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 25px;
+    }
+    
+    .footer {
+      height: 54px;
+      background: rgba(6, 33, 61, 1);
+      color: #999999;
+      text-align: center;
+      line-height: 54px;
+      font-size: 14px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="top">
+    <div class="top-content">
+      <div class="top-left">
+        欢迎访问内部网矿池管理系统！
+      </div>
+      <div class="top-right">
+        <label for="username">用户名:</label>
+        <input type="text" placeholder="请输入用户名" name="username" class="username">
+        <label for="password">密码:</label>
+        <input type="text" placeholder="请输入用户名" name="password" class="password">
+        <button type="text" class="login">登录</button>
+      </div>
+    </div>
+  </div>
+  <div class="login-search">
+    <div class="login-search-content">
+      <img src="./images/logo.png" alt="">
+      <div class="search-wrap">
+        <input type="text" placeholder="请输入数据/应用等名称关键字">
+        <button type="text" class="search">搜索</button>
+      </div>
+    </div>
+  </div>
+  <div class="nav-wrap">
+    <ul class="nav-ul">
+      <li><a href="#">网站首页</a></li>
+      <li><a href="#">矿池管理</a></li>
+      <li><a href="#">详情明细</a></li>
+      <li><a href="#">帮助中心</a></li>
+    </ul>
+  </div>
+  <div class="swiper-container">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide"><img src="./images/carousel1.png" alt=""></div>
+      <div class="swiper-slide"><img src="./images/carousel1.png" alt=""></div>
+      <div class="swiper-slide"><img src="./images/carousel1.png" alt=""></div>
+    </div>
+    <!-- 如果需要分页器 -->
+    <div class="swiper-pagination"></div>
+  </div>
+  <div class="news-wrap">
+    <div class="news-left">
+      <ul class="news-left-tab">
+        <li class="active"><i class="fa fa-commenting-o" aria-hidden="true"></i>通知公告</li>
+        <li><i class="fa fa-file-text-o" aria-hidden="true"></i>法规政策</li>
+      </ul>
+      <ul class="news-content">
+        <li>
+          <img src="./images/top-left.png" alt="">
+          <img src="./images/top-right.png" alt="">
+          <img src="./images/bottom-left.png" alt="">
+          <img src="./images/bottom-right.png" alt="">
+          <div class="news-img-wrap">
+            <img src="./images/news-img.png" class="news-img" alt="">
+            <img src="./images/news-content.png" alt="">
+          </div>
+          <div class="news-content-wrap">
+            <div class="news-content-title">
+              我市着力推进民族特色村
+            </div>
+            <div class="news-content-p">
+              近日，市民族事务委员会、市财政局、市农委在辽东湾新区荣兴街道联合召开推进民族特色村（社区）建设座谈会。
+            </div>
+          </div>
+        </li>
+        <li>
+          <img src="./images/top-left.png" alt="">
+          <img src="./images/top-right.png" alt="">
+          <img src="./images/bottom-left.png" alt="">
+          <img src="./images/bottom-right.png" alt="">
+          <div class="news-img-wrap">
+            <img src="./images/news-img.png" class="news-img" alt="">
+            <img src="./images/news-content.png" alt="">
+          </div>
+          <div class="news-content-wrap">
+            <div class="news-content-title">
+              我市着力推进民族特色村（社区）建设
+            </div>
+            <div class="news-content-p">
+              近日，市民族事务委员会、市财政局、市农委在辽东湾新区荣兴街道联合召开推进民族特色村（社区）建设座谈会。
+            </div>
+          </div>
+        </li>
+      </ul>
+      <ul class="news-content" style="display:none">
+        <li>
+          <img src="./images/top-left.png" alt="">
+          <img src="./images/top-right.png" alt="">
+          <img src="./images/bottom-left.png" alt="">
+          <img src="./images/bottom-right.png" alt="">
+          <div class="news-img-wrap">
+            <img src="./images/news-img.png" class="news-img" alt="">
+            <img src="./images/news-content.png" alt="">
+          </div>
+          <div class="news-content-wrap">
+            <div class="news-content-title">
+              我市着力推进民族特色村（社区）建设
+            </div>
+            <div class="news-content-p">
+              近日，市民族事务委员会、市财政局、市农委在辽东湾新区荣兴街道联合召开推进民族特色村（社区）建设座谈会。
+            </div>
+          </div>
+        </li>
+        <li>
+          <img src="./images/top-left.png" alt="">
+          <img src="./images/top-right.png" alt="">
+          <img src="./images/bottom-left.png" alt="">
+          <img src="./images/bottom-right.png" alt="">
+          <div class="news-img-wrap">
+            <img src="./images/news-img.png" class="news-img" alt="">
+            <img src="./images/news-content.png" alt="">
+          </div>
+          <div class="news-content-wrap">
+            <div class="news-content-title">
+              我市着力推进民族特色村（社区）建设
+            </div>
+            <div class="news-content-p">
+              近日，市民族事务委员会、市财政局、市农委在辽东湾新区荣兴街道联合召开推进民族特色村（社区）建设座谈会。
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="help">
+      <img src="./images/help.png" alt="">
+      <div class="help-detail">
+        <ul class="help-detail-item">
+          <li>
+            <div class="help-title">专有查询具体是查询哪些内容?</div>
+            <div class="help-content">商标专用权，是指商标所有人依法对其 注册商标所享有的专有权利...</div>
+          </li>
+          <li>
+            <div class="help-title">专有查询具体是查询哪些内容?</div>
+            <div class="help-content">商标专用权，是指商标所有人依法对其 注册商标所享有的专有权利...</div>
+          </li>
+          <li>
+            <div class="help-title">专有查询具体是查询哪些内容?</div>
+            <div class="help-content">商标专用权，是指商标所有人依法对其 注册商标所享有的专有权利...</div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="table-wrap">
+    <div class="table-title">
+      <img src="./images/zuan.png">矿池信息
+    </div>
+    <table class="table table-bordered table-hover">
+      <tr>
+        <th>图标</th>
+        <th>币种名</th>
+        <th>地址</th>
+        <th>收费方式</th>
+        <th>费率</th>
+        <th>输入</th>
+        <th>
+          搜索
+        </th>
+      </tr>
+      <tr>
+        <td>图标</td>
+        <td>币种名</td>
+        <td>地址</td>
+        <td>收费方式</td>
+        <td>费率</td>
+        <td>输入</td>
+        <td><img src="./images/search.png" alt="">
+        </td>
+      </tr>
+      <tr>
+        <td>图标</td>
+        <td>币种名</td>
+        <td>地址</td>
+        <td>收费方式</td>
+        <td>费率</td>
+        <td>输入</td>
+        <td><img src="./images/search.png" alt=""></td>
+      </tr>
+      <tr>
+        <td>图标</td>
+        <td>币种名</td>
+        <td>地址</td>
+        <td>收费方式</td>
+        <td>费率</td>
+        <td>输入</td>
+        <td><img src="./images/search.png" alt=""></td>
+      </tr>
+    </table>
+  </div>
+  <div class="map-wrap">
+    <ul class="map-content">
+      <li>
+        <dl>
+          <dt>
+            <a href="#">
+              <i class="fa fa-info-circle" aria-hidden="true"></i>关于 About
+            </a>
+          </dt>
+          <dd>
+            <div>
+              <a href="#">
+                公司简介
+              </a>
+            </div>
+            <div>
+              <a href="#">
+                业务范围
+              </a>
+            </div>
+            <div>
+              <a href="#">
+                联系方式
+              </a>
+            </div>
+          </dd>
+        </dl>
+      </li>
+      <li>
+        <dl>
+          <dt>
+            <a href="#">
+            <i class="fa fa-heartbeat" aria-hidden="true"></i>服务 Support
+            </a>
+          </dt>
+          <dd>
+            <div>
+              <a href="#">
+                算力池  
+              </a>
+            </div>
+            <div>
+              <a href="#">
+                托管
+              </a>
+            </div>
+            <div>
+              <a href="#">
+                自动交易
+              </a>
+            </div>
+          </dd>
+        </dl>
+      </li>
+      <li>
+        <dl>
+          <dt>
+            <a href="#">
+            <i class="fa fa-volume-control-phone" aria-hidden="true"></i>联系我们 Contact
+            </a>
+          </dt>
+          <dd>
+            <div>
+              <a href="#">
+                QQ群   
+              </a>
+            </div>
+            <div>
+              <a href="#">
+                微信公共号
+              </a>
+            </div>
+            <div>
+              <a href="#">
+                电话
+              </a>
+            </div>
+          </dd>
+        </dl>
+      </li>
+      <li>
+        <dl>
+          <dt>
+            <a href="#">
+            <i class="fa fa-question-circle" aria-hidden="true"></i>帮助 Help
+            </a>
+          </dt>
+          <dd>
+            <div>
+              <a href="#">
+                使用方式 
+              </a>
+            </div>
+            <div>
+              <a href="#">
+                基础知识
+              </a>
+            </div>
+          </dd>
+        </dl>
+      </li>
+    </ul>
+  </div>
+  <div class="footer">
+    © 2017 Mining Pool V2.1 算力池 安徽全景网络科技有限公司 By EQNB.COM
+  </div>
+  <script src="js/jquery.min.js"></script>
+  <script src="./js/swiper-4.1.0.min.js"></script>
+  <script>
+    var mySwiper = new Swiper('.swiper-container', {
+      loop: true,
+
+      // 如果需要分页器
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true
+      }
+    })
+    $('.news-left-tab li').click(function(e, i) {
+      $(this).parent().children().removeClass('active')
+      $(this).addClass('active')
+      var index = $(this).index()
+      $('.news-content').hide();
+      var hover = $('.news-content')[index]
+      $(hover).show()
+    })
+  </script>
+</body>
+
+</html>

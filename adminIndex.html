@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="renderer" content="webkit">
+  <title>内部网矿池管理系统</title>
+  <meta name="keywords" content="">
+  <meta name="description" content="">
+  <!--[if lt IE 9]>
+    <meta http-equiv="refresh" content="0;ie.html" />
+    <![endif]-->
+  <link rel="stylesheet" href="fonts/iconfont.css">
+  <link href="css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
+  <link href="css/font-awesome.min.css?v=4.4.0" rel="stylesheet">
+  <link href="css/animate.css" rel="stylesheet">
+  <link href="css/style.css?v=4.1.0" rel="stylesheet">
+
+</head>
+
+<body class="fixed-sidebar full-height-layout gray-bg" style="overflow:hidden">
+  <div id="wrapper">
+    <!--左侧导航开始-->
+    <nav class="navbar-default navbar-static-side" role="navigation">
+      <div class="nav-close"><i class="fa fa-times-circle"></i>
+      </div>
+      <div class="sidebar-collapse">
+        <ul class="nav" id="side-menu">
+          <li class="nav-header">
+            <div class="dropdown profile-element">
+              <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                <div class="clear">
+                  <div class="block m-t-md" style="font-size:20px;">
+                    <p><img class="md" src="images/logo1.png"></p>
+                  </div>
+                </div>
+              </a>
+            </div>
+            <!-- <div class="logo-element"><img src="images/logo2.png">
+            </div> -->
+          </li>
+          <li class="hover">
+            <a class="J_menuItem" href="main.html">
+              <i class="icon iconfont icon-shouye"></i>
+              <span class="nav-label">系统主页</span>
+              <span class="fa arrow"></span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <i class="icon iconfont icon-dingdan"></i>
+              <span class="nav-label">矿池管理</span>
+              <span class="fa arrow"></span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <i class="icon iconfont icon-tongji"></i>
+              <span class="nav-label">行情明细</span>
+              <span class="fa arrow"></span>
+            </a>
+          </li>
+          <li>
+            <a href="helping.html" class="J_menuItem">
+              <i class="icon iconfont icon-bangzhu"></i>
+              <span class="nav-label">帮助中心</span>
+              <span class="fa arrow"></span>
+            </a>
+          </li>
+        </ul>
+        <ul class="map-content">
+          <li>
+            <dl>
+              <dt>
+            <a href="#">
+              <i class="fa fa-info-circle" aria-hidden="true"></i>关于 About
+            </a>
+          </dt>
+              <dd>
+                <div>
+                  <a href="#">
+                  公司简介</a>
+                </div>
+                <div>
+                  <a href="#">
+                  业务范围</a>
+                </div>
+                <div>
+                  <a href="#">
+                  联系方式</a>
+                </div>
+              </dd>
+            </dl>
+          </li>
+          <li>
+            <dl>
+              <dt>
+            <a href="#">
+            <i class="fa fa-heartbeat" aria-hidden="true"></i>服务 Support
+            </a>
+          </dt>
+              <dd>
+                <div>
+                  <a href="#">
+                  算力池</a>
+                </div>
+                <div>
+                  <a href="#">
+                  托管</a>
+                </div>
+                <div>
+                  <a href="#">
+                  自动交易</a>
+                </div>
+              </dd>
+            </dl>
+          </li>
+          <li>
+            <dl>
+              <dt>
+            <a href="#">
+            <i class="fa fa-volume-control-phone" aria-hidden="true"></i>联系我们 Contact
+            </a>
+          </dt>
+              <dd>
+                <div>
+                  <a href="#">
+                  QQ群</a>
+                </div>
+                <div>
+                  <a href="#">
+                  微信公共号</a>
+                </div>
+                <div>
+                  <a href="#">
+                  电话</a>
+                </div>
+              </dd>
+            </dl>
+          </li>
+          <li>
+            <dl>
+              <dt>
+            <a href="#">
+            <i class="fa fa-question-circle" aria-hidden="true"></i>帮助 Help
+            </a>
+          </dt>
+              <dd>
+                <div>
+                  <a href="#">
+                  使用方式</a>
+                </div>
+                <div>
+                  <a href="#">
+                  基础知识</a>
+                </div>
+              </dd>
+            </dl>
+          </li>
+          <li>
+            © 2017 Mining Pool V2.1 <br>算力池 安徽全景网络科技有限公司<br> By EQNB.COM
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <!--左侧导航结束-->
+    <!--右侧部分开始-->
+    <div id="page-wrapper" class="gray-bg dashbard-1">
+      <div class="row border-bottom">
+        <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
+          <div class="navbar-header"><a class="navbar-minimalize minimalize-styl-2" href="#"><i class="fa fa-bars"></i> </a>
+            <form role="search" class="navbar-form-custom" method="post" action="search_results.html">
+              <div class="date-time">
+                <b id="time">00:00:00</b>
+                <span id="date"></span>
+              </div>
+            </form>
+          </div>
+          <div class="nav navbar-top-links navbar-right">
+            您好，尊敬的<b>max</b><span>管理员</span>，欢迎使用内部网矿池管理系统!
+            <br>
+            <a href="#"><i class="fa fa-sign-out"></i>退出账号</a>
+          </div>
+        </nav>
+      </div>
+      <div class="row J_mainContent" id="content-main">
+        <iframe id="J_iframe" width="100%" height="100%" src="main.html" frameborder="0" data-id="main.html" seamless></iframe>
+      </div>
+    </div>
+    <!--右侧部分结束-->
+  </div>
+  <!-- 全局js -->
+  <script src="js/jquery.min.js?v=2.1.4"></script>
+  <script src="js/jquery.leoweather.min.js"></script>
+  <script src="js/bootstrap.min.js?v=3.3.6"></script>
+  <script src="js/jquery.metisMenu.js"></script>
+  <script src="js/jquery.slimscroll.min.js"></script>
+  <script src="js/layer.min.js"></script>
+  <!-- 自定义js -->
+  <script src="js/hAdmin.js?v=4.1.0"></script>
+  <script type="text/javascript" src="js/index.js"></script>
+  <!-- 第三方插件 -->
+  <script src="js/pace.min.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      //JS时间一位自动补零
+      function Appendzero(obj) {
+        if (obj < 10) return "0" + obj;
+        else return obj;
+      }
+
+      function show() {
+        var mydate = new Date();
+        var str = "" + mydate.getFullYear() + "/";
+        str += (mydate.getMonth() + 1) + "/";
+        str += mydate.getDate() + " ";
+        var weekday = [" 星期日", " 星期一", " 星期二", " 星期三", " 星期四", " 星期五", " 星期六"];
+        var mynum = mydate.getDay();
+        str += weekday[mynum];
+        return str;
+      }
+      $("#date").html(show());
+
+      function showTime() {
+        var date = new Date();
+        var hour = date.getHours();
+        var minute = date.getMinutes();
+        var second = date.getSeconds();
+        var dateStr = Appendzero(hour) + ":" + Appendzero(minute) + ":" + Appendzero(second);
+        $("#time").html(dateStr);
+      }
+      var interval = window.setInterval(showTime, 100);
+    });
+  </script>
+</body>
+
+</htm>

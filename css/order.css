@@ -1,0 +1,232 @@
+.shaixuan {
+	padding:5px 0;
+}
+.shaixuan span {
+	margin-right:15px;
+}
+.shaixuan span.search {
+	margin-right:0;
+}
+.search {
+	position:relative;
+}
+
+.search select {
+	position:absolute;
+	left:5px;
+	top:5px;
+	border:none;
+	border-right:1px #e1e1e1 solid;
+	padding-right:5px;
+}
+.search input {
+	width:320px;
+	padding-left:100px;
+}
+.search .btn {
+	background:#0C92CC;
+	padding:5px 15px;
+	color:#fff;
+}
+.search .btn:hover {
+	background:#0c63ae;
+	text-decoration:none;
+}
+.search i {
+	margin-right:5px;
+}
+table.list.orderlist td{
+	font-size:16px;
+}
+table.list.orderlist td span{
+     display:block;
+}
+table.list.orderlist td span.zhuangtai{
+	color:#F88530;
+}
+table.list.orderlist td span.orderid{
+	color:#BBBBBB;
+	font-size:14px;
+}
+table.list.orderlist td b{
+	color:#333;
+	font-size:20px;
+}
+table.list.orderlist td span.dizhi {
+	color:#999;
+	font-size:14px;
+}
+table.list.orderlist td span.dizhi i {
+	margin-right:5px;
+	font-size:16px;
+}
+table.list.orderlist td span.jine b {
+    margin-right:5px;
+}
+
+table.list.orderlist td span.orderinfoupdatetime {
+	color:#888;
+	font-size:14px;
+}
+table.list.orderlist td span.caozuo a{
+	font-size:14px;
+	margin-left:15px;
+}
+table.list.orderlist tr {
+	position:relative;
+}
+table.list.orderlist tr.weijiedan {
+	background-color: #FAF8EE;
+}
+table.list.orderlist tr td.jishi {
+background:url(../images/jishi.png);
+background-repeat:no-repeat;
+background-position:left top;
+
+}
+.list_bottom {
+	padding:20px 0 0 0;
+} 
+.xuanze {
+	width:200px;
+	padding-left:35px;
+}
+.xuanze a {
+	margin-right:10px;
+}
+/*新建订单*/
+.xinjian td {
+	padding:10px;
+	color: #666666;
+	font-size: 14px;
+}
+.xinjian span.title {
+	font-size: 16px;
+	font-weight: bold;
+	color:#333;
+	display:block;
+	border-bottom:1px #e5e5e5 solid;
+	padding-bottom:15px;
+}
+.xinjian span.title i {
+	margin-right:5px;
+}
+.xinjian span.leixing {
+
+}
+.xinjian span.leixing a {
+	padding:10px 55px;
+	border:1px #E5E5E5 solid;
+	margin-right:15px;
+	color:#333;
+	text-decoration:none;
+}
+.xinjian span.leixing a:hover{
+	text-decoration:none;
+}
+.xinjian span.leixing a.hover {
+	background-image:url(../images/checked.png);
+	background-repeat:no-repeat;
+	background-position:right bottom;
+	border:1px #F6680E solid;
+	color:#F6680E;
+}
+.xinjian span.daozhanshijian input {
+	margin-left:15px;
+}
+.xinjian span.yunsongqidian {
+	font-size:16px;
+}
+.xinjian div.xiangxi {
+	margin:15px 0;
+}
+.xinjian div.xiangxi a.xuanzeweizhi {
+	padding:5px 15px;
+	border:1px #e5e5e5 solid;
+	color:#ea400c;
+	font-weight:bold;
+	border-radius:5px;
+
+	margin-left:15px;
+}
+.xinjian div.xiangxi a.xuanzeweizhi:hover {
+	text-decoration:none;
+	color:#fff;
+	background:#ea400c;
+	border:1px #ea400c solid;
+}
+.xinjian div.xiangxi a.xuanzeweizhi i {
+	font-size:16px;
+	margin-right:5px;
+}
+.xinjian span.fangliang label {
+	border:1px #e5e5e5 solid;
+	height:80px;
+	padding-left:13px;
+	width:130px;
+	padding:0;
+	margin-left:10px;
+
+}
+.xinjian span.fangliang label select {
+	color: #555;
+	width:120px;
+	text-align:center;
+	font-size:36px;
+	margin-top:13px;
+	margin-bottom:13px;
+	vertical-align:middle;
+}
+.xinjian span.fangliang label option {
+	font-weight: bold;
+}
+.xinjian span.yunju input ,.xinjian span.shichang input{
+	height:80px;
+	line-height:80px;
+	border:1px #e5e5e5 solid;
+	color:#555;
+	font-size:36px;
+	padding-left:18px;
+	width:140px;
+	margin-left:10px;
+}
+
+.xinjian span.yunju ,.xinjian span.shichang {
+	padding-left:25px;
+}
+.xinjian .danjia {
+	padding-top:20px;
+	padding-left:40px;
+}
+.xinjian .danjia b {
+	color:#F6680E;
+}
+.xinjian  input.feiyong {
+	height:80px;
+	line-height:80px;
+	width:180px;
+	padding-left:15px;
+	margin-left:10px;
+	border:1px #e5e5e5 solid;
+	font-size:40px;
+	font-weight:bold;
+	color:#F6680E;
+	margin-right:10px;
+}
+.xinjian div.tips {
+	margin-top:15px;
+	margin-left:65px;
+	font-style:italic;
+}
+a.tijiao {
+	background-color:#098CC9;
+	padding:10px 42px;
+	color:#fff;
+	font-size:18px;
+	clear:both;
+	margin-left: 65px;
+}
+a.tijiao:hover {
+	text-decoration:none;
+	color:#fff;
+}
