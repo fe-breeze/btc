@@ -63,7 +63,9 @@ $.getJSON(url, { coin: coin, miner: address }, function(date) {
   var myChart = echarts.init(document.getElementById('main'));
   var myChart1 = echarts.init(document.getElementById('main1'));
   var history = date.Result.History;
-  var chartDate = [];
+  var gains = date.Result.Gains
+  var chartDate = [],
+    chartDate1 = [];
 
   var temp = {};
   temp.name = "总算力";
@@ -97,6 +99,47 @@ $.getJSON(url, { coin: coin, miner: address }, function(date) {
   temp.yAxisIndex = 1;
   temp.smooth = true;
   chartDate.push(temp);
+  var Time = [],
+    Diff = [],
+    Price = []
+  $.each(gains, function(i, e) {
+    Time.push(new Date(e.Time * 1000).getFullYear() + '-' + new Date(e.Time * 1000).Format("MM-dd hh:mm:ss"))
+    Diff.push(e.Diff)
+    Price.push(e.Price)
+  })
+  console.log(Diff)
+  var temp = {};
+  temp.name = "价格";
+  temp.type = "line";
+  temp.data = Price;
+  temp.smooth = true;
+  temp.itemStyle = {
+    normal: {
+      lineStyle: {
+        color: "#006633"
+      },
+    }
+  };
+  chartDate1.push(temp);
+  var temp = {};
+  temp.name = "难度";
+  temp.type = "line";
+  temp.itemStyle = {
+    normal: {
+      lineStyle: {
+        color: "#cc6600",
+        width: 1
+      },
+      areaStyle: {
+        color: "#cccc66",
+        type: 'default'
+      }
+    }
+  };
+  temp.data = Diff;
+  temp.yAxisIndex = 1;
+  temp.smooth = true;
+  chartDate1.push(temp);
 
   var option = {
     title: {
@@ -136,7 +179,7 @@ $.getJSON(url, { coin: coin, miner: address }, function(date) {
     }],
     yAxis: [{
         type: 'value',
-        name: '总算力',
+        name: '余额',
         scale: true,
         axisLabel: {
           formatter: '{value}'
@@ -156,7 +199,7 @@ $.getJSON(url, { coin: coin, miner: address }, function(date) {
       {
         show: false,
         type: 'value',
-        name: '余额',
+        name: '总算力',
         axisLabel: {
           formatter: '{value}'
         },
@@ -168,8 +211,78 @@ $.getJSON(url, { coin: coin, miner: address }, function(date) {
     ],
     series: chartDate
   };
+  var option1 = {
+    title: {
+      text: '状态统计',
+      left: 'center'
+    },
+    tooltip: {
+      trigger: 'axis',
+      axisPointer: {
+        type: 'cross',
+        label: {
+          backgroundColor: '#999'
+        }
+      }
+    },
+    grid: {
+      bottom: 60,
+      right: 0,
+      left: 40,
+      top: 60
+    },
+    legend: {
+      data: ['难度', '价格'],
+      bottom: 0
+    },
+    // toolbox: {
+    //   feature: {
+    //     saveAsImage: {}
+    //   }
+    // },
+    xAxis: [{
+      type: 'category',
+      data: Time,
+      axisPointer: {
+        type: 'shadow'
+      }
+    }],
+    yAxis: [{
+        type: 'value',
+        name: '难度',
+        scale: true,
+        axisLabel: {
+          formatter: '{value}'
+        },
+        splitNumber: 8,
+        min: function(value) {
+          var v = value.min * 0.5;
+          if (v < 0) {
+            v = 0;
+          }
+          return v.toFixed(1);
+        },
+        max: function(value) {
+          return (value.max * 1.1).toFixed(1);
+        }
+      },
+      {
+        show: false,
+        type: 'value',
+        name: '价格',
+        axisLabel: {
+          formatter: '{value}'
+        },
+        splitNumber: 8,
+        max: function(value) {
+          return value.max * 4;
+        }
+      }
+    ],
+    series: chartDate1
+  };
   myChart.setOption(option);
-  myChart1.setOption(option);
+  myChart1.setOption(option1);
   $("#minerDropTable").tablesort();
   $("#minerOnlineTable").tablesort();
   $("#minerPaylogTable").tablesort();
@@ -234,6 +347,7 @@ function Average(arr) {
 }
 Date.prototype.Format = function(fmt) { //author: meizz
   var o = {
+    "Y+": this.getFullYear(),
     "M+": this.getMonth() + 1, //月份
     "d+": this.getDate(), //日
     "h+": this.getHours(), //小时
