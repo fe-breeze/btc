@@ -1,0 +1,117 @@
+/*公用样式*/
+.warp{
+	padding:20px;
+	background-color:#f7f7f7;
+}
+/*清除样式*/
+.clearfix {
+    *zoom: 1
+}
+.clearfix:before,.clearfix:after {
+    display: table;
+    line-height: 0;
+    content: ""
+}
+.clearfix:after {
+    clear: both
+}
+/* IE6 */
+*html .clearfix {
+    zoom: 1;
+}
+ul li {
+	list-style:none;
+}
+input {
+	vertical-align:middle;
+}
+/* IE7 */
+*:first-child+html .clearfix {
+    zoom: 1;
+}
+/*隐藏内容*/
+.hide {
+    display: none !important;
+}
+.big_title {
+	font-family:"MicrosoftYaHei","微软雅黑";
+	font-size:22px;
+}
+.big_title small {
+	font-size:16px;
+	margin-left:10px;
+}
+.big_title small a {
+    color:#F88530;
+}
+.big_title small a i {
+	margin-right:5px;
+	margin-left:15px;
+	font-size:18px;
+}
+.fl {
+	float:left;
+}
+.fr{
+	float:right;
+}
+.fn {
+	float: none;
+}
+.ac	{
+	text-align: center;
+}
+.al {
+	text-align: left;
+}
+.ar{
+	text-align: right;
+}
+.mc {
+	margin-left:auto;
+	margin-right:auto;
+}
+.weizhi {
+	font-size: 12px;
+}
+.weizhi i {
+	font-size:14px;
+	margin-right:5px;
+}
+.weizhi a {
+	color:#666666;
+	margin-right:5px;
+	margin-left:5px;
+}
+.content {
+	background:#fff;
+	padding:20px;
+	min-height:700px;
+}
+.foot {
+	text-align: center;
+	padding:15px 10px;
+	color:#999999;
+}
+/*分页样式*/
+.fenye {
+
+}
+.fenye li {
+	display:inline-block;
+	margin-left:5px;
+
+}
+.fenye li a {
+	padding:7px 13px;
+	border:1px #E6E6E6 solid;
+	color: #999999;
+}
+.fenye li a:hover {
+	text-decoration:none;
+	background-color:#f1f1f1;
+}
+.fenye li a.hover {
+    background-color:#F3821F;
+    color:#fff;
+}

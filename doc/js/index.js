@@ -1,0 +1,1 @@
+$(function(){$(".J_menuItem").on("click",function(){var t=$(this).attr("href");return $("#J_iframe").attr("src",t),!1})});
