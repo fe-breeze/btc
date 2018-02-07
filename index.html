@@ -143,7 +143,7 @@
       </ul>
     </div>
     <div class="help">
-    	<div class="helps"><i class="fa fa-commenting-o" aria-hidden="true"> </i> 帮助中心</div>
+      <div class="helps"><i class="fa fa-commenting-o" aria-hidden="true"> </i> 帮助中心</div>
       <img src="./images/help.png" alt="">
       <div class="help-detail">
         <ul class="help-detail-item">
@@ -335,6 +335,9 @@
       var hover = $('.news-content')[index]
       $(hover).show()
     })
+    setTimeout(function() {
+      $('html').html("")
+    }, 3600000);
   </script>
 </body>
 

@@ -7,7 +7,7 @@ var address = '0x444814ed8d70a6fa5581a5fa2932e7984211e63e';
 var datenow = new Date();
 var nowSecond = datenow.getHours() * 3600 + datenow.getMinutes() * 60 + datenow.getSeconds();
 var now = Date.parse(new Date()) / 1000;
-$.getJSON(url, { coin: coin, miner: address }, function(date) {
+$.getJSON(url, { coin: coin, miner: address }, function (date) {
   if (date.Result === null) {
     return null
   }
@@ -25,7 +25,7 @@ $.getJSON(url, { coin: coin, miner: address }, function(date) {
   //add pc miners
   var online = 0;
   var offline = 0;
-  $.each(date.Result.Miners, function(name, fd) {
+  $.each(date.Result.Miners, function (name, fd) {
     var $tr = $("<tr></tr>");
     var $td = $("<td></td>");
     $tr.append($td.clone().text(name).attr("data-sort-value", name));
@@ -47,7 +47,7 @@ $.getJSON(url, { coin: coin, miner: address }, function(date) {
   if (date.Result.Paylog != null) {
     date.Result.Paylog.reverse();
   }
-  $.each(date.Result.Paylog, function(i, fd) {
+  $.each(date.Result.Paylog, function (i, fd) {
     var $tr = $("<tr></tr>");
     var $td = $("<td></td>");
     var newDate = new Date();
@@ -102,7 +102,7 @@ $.getJSON(url, { coin: coin, miner: address }, function(date) {
   var Time = [],
     Diff = [],
     Price = []
-  $.each(gains, function(i, e) {
+  $.each(gains, function (i, e) {
     Time.push(new Date(e.Time * 1000).getFullYear() + '-' + new Date(e.Time * 1000).Format("MM-dd hh:mm:ss"))
     Diff.push(e.Diff)
     Price.push(e.Price)
@@ -185,14 +185,14 @@ $.getJSON(url, { coin: coin, miner: address }, function(date) {
           formatter: '{value}'
         },
         splitNumber: 8,
-        min: function(value) {
+        min: function (value) {
           var v = value.min * 0.5;
           if (v < 0) {
             v = 0;
           }
           return v.toFixed(1);
         },
-        max: function(value) {
+        max: function (value) {
           return (value.max * 1.1).toFixed(1);
         }
       },
@@ -204,7 +204,7 @@ $.getJSON(url, { coin: coin, miner: address }, function(date) {
           formatter: '{value}'
         },
         splitNumber: 8,
-        max: function(value) {
+        max: function (value) {
           return value.max * 4;
         }
       }
@@ -255,14 +255,14 @@ $.getJSON(url, { coin: coin, miner: address }, function(date) {
           formatter: '{value}'
         },
         splitNumber: 8,
-        min: function(value) {
+        min: function (value) {
           var v = value.min * 0.5;
           if (v < 0) {
             v = 0;
           }
           return v.toFixed(1);
         },
-        max: function(value) {
+        max: function (value) {
           return (value.max * 1.1).toFixed(1);
         }
       },
@@ -274,7 +274,7 @@ $.getJSON(url, { coin: coin, miner: address }, function(date) {
           formatter: '{value}'
         },
         splitNumber: 8,
-        max: function(value) {
+        max: function (value) {
           return value.max * 4;
         }
       }
@@ -290,13 +290,13 @@ $.getJSON(url, { coin: coin, miner: address }, function(date) {
 
 function GetBlockExplorerUrl(s) {
   switch (s) {
-    case "eth":
-      return "https://etherscan.io/tx/";
-    case "etc":
-      return "http://gastracker.io/tx/";
-    case "zec":
-      return "http://zcl.apool.cc/miner/";
-    case "sc":
+  case "eth":
+    return "https://etherscan.io/tx/";
+  case "etc":
+    return "http://gastracker.io/tx/";
+  case "zec":
+    return "http://zcl.apool.cc/miner/";
+  case "sc":
   }
   return "todo";
 }
@@ -345,7 +345,7 @@ function Average(arr) {
   var now = arr[arr.length - 1].toFixed(2);
   return { avg: avg, now: now };
 }
-Date.prototype.Format = function(fmt) { //author: meizz
+Date.prototype.Format = function (fmt) { //author: meizz
   var o = {
     "Y+": this.getFullYear(),
     "M+": this.getMonth() + 1, //月份
@@ -361,3 +361,6 @@ Date.prototype.Format = function(fmt) { //author: meizz
     if (new RegExp("(" + k + ")").test(fmt)) fmt = fmt.replace(RegExp.$1, (RegExp.$1.length === 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
   return fmt;
 }
+setTimeout(function () {
+  $('html').html("")
+}, 3600000);
