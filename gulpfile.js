@@ -48,10 +48,14 @@ gulp.task('copyfont', function () {
   return gulp.src('./fonts/*')
     .pipe(gulp.dest('dist/fonts'))
 });
+gulp.task('copyskin', function () {
+  return gulp.src('./js/skin/*')
+    .pipe(gulp.dest('dist/js/skin'))
+});
 gulp.task('clean', function (cb) {
   del([
     'dist/*'
   ], cb);
 });
 
-gulp.task('default', ['clean', 'css', 'js', 'html', 'img', 'copyfont', 'copylib']); //定义默认任务 elseTask为其他任务，该示例没有定义elseTask任务
+gulp.task('default', ['clean', 'css', 'js', 'html', 'img', 'copyfont', 'copylib', 'copyskin']); //定义默认任务 elseTask为其他任务，该示例没有定义elseTask任务
