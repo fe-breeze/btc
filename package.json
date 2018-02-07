@@ -1,0 +1,30 @@
+{
+  "name": "btc",
+  "version": "1.0.0",
+  "description": "",
+  "main": "gulpfile.js",
+  "scripts": {
+    "start": "gulp"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fe-breeze/btc.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fe-breeze/btc/issues"
+  },
+  "homepage": "https://github.com/fe-breeze/btc#readme",
+  "dependencies": {
+    "autoprefixer": "^7.2.5",
+    "del": "^3.0.0",
+    "gulp": "^3.9.1",
+    "gulp-htmlmin": "^4.0.0",
+    "gulp-postcss": "^7.0.1",
+    "gulp-uglify": "^3.0.0"
+  },
+  "devDependencies": {
+    "gulp-imagemin": "^4.1.0"
+  }
+}

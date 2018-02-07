@@ -7587,8 +7587,14 @@ body.skin-3 {
     display: none;
   }
   body.fixed-sidebar.mini-navbar .navbar-static-side {
-    width: 130px;
+    width:0;
   }
+   #page-wrapper {
+    margin-left: 0!important;
+  }
+  .nav-close {
+    display: block;
+}
   .lock-word {
     display: none;
   }
@@ -7640,14 +7646,12 @@ body.skin-3 {
 
 .nav-close {
   padding: 10px;
-  display: block;
   position: absolute;
   right: 5px;
   top: 5px;
   font-size: 1.4em;
   cursor: pointer;
   z-index: 10;
-  display: none;
   color: rgba(255, 255, 255, .3);
 }
 
@@ -7898,10 +7902,10 @@ body.skin-3 {
   }
 }
 
-.navbar-header {
-  width: 200px;
+/*.navbar-header {
+width: 200px;
 }
-
+*/
 .bs-glyphicons {
   margin: 0 -10px 20px;
   overflow: hidden
