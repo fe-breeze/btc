@@ -7,6 +7,15 @@ $(function() {
   var datenow = new Date();
   var nowSecond = datenow.getHours() * 3600 + datenow.getMinutes() * 60 + datenow.getSeconds();
   var now = Date.parse(new Date()) / 1000;
+
+  function bytesToSize(bytes) {
+    if (bytes === 0) return '0 B';
+    var k = 1000, // or 1024
+      sizes = ['B', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'],
+      i = Math.floor(Math.log(bytes) / Math.log(k));
+
+    return (bytes / Math.pow(k, i)).toPrecision(3) + ' ' + sizes[i];
+  }
   Date.prototype.Format = function(fmt) { //author: meizz
     var o = {
       "Y+": this.getFullYear(),
@@ -130,10 +139,15 @@ $(function() {
       Price = []
     $.each(gains, function(i, e) {
       Time.push(new Date(e.Time * 1000).getFullYear() + '-' + new Date(e.Time * 1000).Format("MM-dd hh:mm:ss"))
-      Diff.push(e.Diff)
+      var size = bytesToSize(e.Diff)
+        // console.log(size)
+      Diff.push({
+        name: size,
+        value: e.Diff
+      })
       Price.push(e.Price)
     })
-
+    console.log(Diff)
     var temp = {};
     temp.name = "价格";
     temp.type = "line";
