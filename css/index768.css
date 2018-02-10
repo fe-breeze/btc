@@ -1,6 +1,8 @@
 @charset "UTF-8";
-
 @media (max-width: 768px) {
+  .swiper-container {
+    display: none;
+  }
   .top-content {
     width: 100%;
   }
@@ -19,11 +21,11 @@
     border: 1px solid #67737B;
     padding: 0;
   }
-  .login-search-content>img {
+  /* .login-search-content>img {
     top: 35%;
     width: 280px;
     margin-left: 20px;
-  }
+  } */
   .login-search-content {
     width: 100%;
   }
@@ -60,7 +62,7 @@
     font-size: 14px;
   }
   .news-wrap {
-    margin-top: 45px;
+    margin-top: 12px;
     width: 100%;
     overflow: hidden;
   }

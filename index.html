@@ -36,10 +36,10 @@
   <div class="login-search">
     <div class="login-search-content">
       <img src="./images/logo.png" alt="">
-      <div class="search-wrap">
+      <!-- <div class="search-wrap">
         <input type="text" placeholder="请输入数据/应用等名称关键字">
         <button type="text" class="search">搜索</button>
-      </div>
+      </div> -->
     </div>
   </div>
   <div class="nav-wrap">
@@ -181,30 +181,30 @@
       </tr>
       <tr>
         <td>图标</td>
-        <td>币种名</td>
+        <td>eth</td>
         <td>地址</td>
         <td>收费方式</td>
         <td>费率</td>
-        <td>输入</td>
+        <td><input type="text"></td>
         <td><img src="./images/search.png" alt="">
         </td>
       </tr>
       <tr>
         <td>图标</td>
-        <td>币种名</td>
+        <td>eth</td>
         <td>地址</td>
         <td>收费方式</td>
         <td>费率</td>
-        <td>输入</td>
+        <td><input type="text"></td>
         <td><img src="./images/search.png" alt=""></td>
       </tr>
       <tr>
         <td>图标</td>
-        <td>币种名</td>
+        <td>eth</td>
         <td>地址</td>
         <td>收费方式</td>
         <td>费率</td>
-        <td>输入</td>
+        <td><input type="text"></td>
         <td><img src="./images/search.png" alt=""></td>
       </tr>
     </table>
@@ -320,7 +320,7 @@
   <script>
     var mySwiper = new Swiper('.swiper-container', {
       loop: true,
-
+      autoplay: true,
       // 如果需要分页器
       pagination: {
         el: '.swiper-pagination',
@@ -334,6 +334,11 @@
       $('.news-content').hide();
       var hover = $('.news-content')[index]
       $(hover).show()
+    })
+    $('tr td img').click(function() {
+      var name = $(this).parent().parent().children().eq(1).text()
+      var addr = $(this).parent().parent().children().eq(5).children().val()
+      window.location.href = `miner.html?coin=${name}&miner=${addr}`
     })
     setTimeout(function() {
       $('html').html("")

@@ -159,7 +159,7 @@
     .nav-wrap {
       background-color: #1E72B6;
       height: 50px;
-      box-shadow: 0px 10px 5px #1E72B6;
+      box-shadow: 0px 5px 5px #1E72B6;
     }
     
     .nav-ul {
@@ -311,6 +311,12 @@
       color: #164E89;
       background: rgba(240, 245, 248, 1);
       font-size: 18px;
+    }
+    
+    .table-wrap input {
+      width: 100%;
+      padding: 0;
+      height: 58px;
     }
     
     .table-title {
