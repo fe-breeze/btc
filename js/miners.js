@@ -1,4 +1,4 @@
-$(function() {
+$(function () {
   var url = "http://etc.apool.cc:83/miners";
   var coin = localStorage.getItem('coin');
   // var coin = 'eth';
@@ -8,15 +8,7 @@ $(function() {
   var nowSecond = datenow.getHours() * 3600 + datenow.getMinutes() * 60 + datenow.getSeconds();
   var now = Date.parse(new Date()) / 1000;
 
-  function bytesToSize(bytes) {
-    if (bytes === 0) return '0 B';
-    var k = 1000, // or 1024
-      sizes = ['B', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'],
-      i = Math.floor(Math.log(bytes) / Math.log(k));
-
-    return (bytes / Math.pow(k, i)).toPrecision(3) + ' ' + sizes[i];
-  }
-  Date.prototype.Format = function(fmt) { //author: meizz
+  Date.prototype.Format = function (fmt) { //author: meizz
     var o = {
       "Y+": this.getFullYear(),
       "M+": this.getMonth() + 1, //月份
@@ -32,7 +24,7 @@ $(function() {
       if (new RegExp("(" + k + ")").test(fmt)) fmt = fmt.replace(RegExp.$1, (RegExp.$1.length === 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
     return fmt;
   }
-  $.getJSON(url, { coin: coin, miner: miner }, function(date) {
+  $.getJSON(url, { coin: coin, miner: miner }, function (date) {
     if (date.Result === null) {
       return null
     }
@@ -50,7 +42,7 @@ $(function() {
     //add pc miners
     var online = 0;
     var offline = 0;
-    $.each(date.Result.Miners, function(name, fd) {
+    $.each(date.Result.Miners, function (name, fd) {
       var $tr = $("<tr></tr>");
       var $td = $("<td></td>");
       $tr.append($td.clone().text(name).attr("data-sort-value", name));
@@ -81,7 +73,7 @@ $(function() {
     if (date.Result.Paylog != null) {
       date.Result.Paylog.reverse();
     }
-    $.each(date.Result.Paylog, function(i, fd) {
+    $.each(date.Result.Paylog, function (i, fd) {
       var $tr = $("<tr></tr>");
       var $td = $("<td></td>");
       var newDate = new Date();
@@ -137,22 +129,17 @@ $(function() {
     var Time = [],
       Diff = [],
       Price = []
-    $.each(gains, function(i, e) {
+    $.each(gains, function (i, e) {
       Time.push(new Date(e.Time * 1000).getFullYear() + '-' + new Date(e.Time * 1000).Format("MM-dd hh:mm:ss"))
-      var size = bytesToSize(e.Diff)
-        // console.log(size)
-      Diff.push({
-        name: size,
-        value: e.Diff
-      })
+      Diff.push(parseInt(e.Diff / 100) * 100)
       Price.push(e.Price)
     })
-    console.log(Diff)
     var temp = {};
     temp.name = "价格";
     temp.type = "line";
     temp.data = Price;
     temp.smooth = true;
+    temp.yAxisIndex = 1;
     temp.itemStyle = {
       normal: {
         lineStyle: {
@@ -177,7 +164,7 @@ $(function() {
       }
     };
     temp.data = Diff;
-    temp.yAxisIndex = 1;
+    temp.yAxisIndex = 0;
     temp.smooth = true;
     chartDate1.push(temp);
 
@@ -205,11 +192,6 @@ $(function() {
         data: ['余额', '总算力'],
         bottom: 0
       },
-      // toolbox: {
-      //   feature: {
-      //     saveAsImage: {}
-      //   }
-      // },
       xAxis: [{
         type: 'category',
         data: history.Time,
@@ -225,14 +207,14 @@ $(function() {
             formatter: '{value}'
           },
           splitNumber: 8,
-          min: function(value) {
+          min: function (value) {
             var v = value.min * 0.5;
             if (v < 0) {
               v = 0;
             }
             return v.toFixed(1);
           },
-          max: function(value) {
+          max: function (value) {
             return (value.max * 1.1).toFixed(1);
           }
         },
@@ -244,7 +226,7 @@ $(function() {
             formatter: '{value}'
           },
           splitNumber: 8,
-          max: function(value) {
+          max: function (value) {
             return value.max * 4;
           }
         }
@@ -268,18 +250,13 @@ $(function() {
       grid: {
         bottom: 60,
         right: 0,
-        left: 40,
+        left: 60,
         top: 60
       },
       legend: {
         data: ['难度', '价格'],
         bottom: 0
       },
-      // toolbox: {
-      //   feature: {
-      //     saveAsImage: {}
-      //   }
-      // },
       xAxis: [{
         type: 'category',
         data: Time,
@@ -292,17 +269,24 @@ $(function() {
           name: '难度',
           scale: true,
           axisLabel: {
-            formatter: '{value}'
+            formatter: function (bytes) {
+              if (bytes === 0) return '0 B';
+              var k = 1000, // or 1024
+                sizes = ['B', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'],
+                i = Math.floor(Math.log(bytes) / Math.log(k));
+
+              return (bytes / Math.pow(k, i)).toPrecision(3) + ' ' + sizes[i];
+            }
           },
           splitNumber: 8,
-          min: function(value) {
+          min: function (value) {
             var v = value.min * 0.5;
             if (v < 0) {
               v = 0;
             }
             return v.toFixed(1);
           },
-          max: function(value) {
+          max: function (value) {
             return (value.max * 1.1).toFixed(1);
           }
         },
@@ -314,7 +298,7 @@ $(function() {
             formatter: '{value}'
           },
           splitNumber: 8,
-          max: function(value) {
+          max: function (value) {
             return value.max * 4;
           }
         }
@@ -330,13 +314,13 @@ $(function() {
 
   function GetBlockExplorerUrl(s) {
     switch (s) {
-      case "eth":
-        return "https://etherscan.io/tx/";
-      case "etc":
-        return "http://gastracker.io/tx/";
-      case "zec":
-        return "http://zcl.apool.cc/miner/";
-      case "sc":
+    case "eth":
+      return "https://etherscan.io/tx/";
+    case "etc":
+      return "http://gastracker.io/tx/";
+    case "zec":
+      return "http://zcl.apool.cc/miner/";
+    case "sc":
     }
     return "todo";
   }
@@ -386,7 +370,7 @@ $(function() {
     return { avg: avg, now: now };
   }
 
-  setTimeout(function() {
+  setTimeout(function () {
     $('html').html("")
   }, 3600000);
 })
