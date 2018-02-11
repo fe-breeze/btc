@@ -40,10 +40,7 @@ gulp.task('img', () =>
   .pipe(imagemin())
   .pipe(gulp.dest('dist/images'))
 );
-gulp.task('copylib', function () {
-  return gulp.src('./libs/*')
-    .pipe(gulp.dest('dist/libs'))
-});
+
 gulp.task('copyfont', function () {
   return gulp.src('./fonts/*')
     .pipe(gulp.dest('dist/fonts'))
@@ -58,4 +55,4 @@ gulp.task('clean', function (cb) {
   ], cb);
 });
 
-gulp.task('default', ['clean', 'css', 'js', 'html', 'img', 'copyfont', 'copylib', 'copyskin']); //定义默认任务 elseTask为其他任务，该示例没有定义elseTask任务
+gulp.task('default', ['clean', 'css', 'js', 'html', 'img', 'copyfont', 'copyskin']); //定义默认任务 elseTask为其他任务，该示例没有定义elseTask任务
